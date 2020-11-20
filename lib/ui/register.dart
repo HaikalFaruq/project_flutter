@@ -1,11 +1,11 @@
 part of 'ui.dart';
 
-class Login extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(50),
                       color: Colors.teal[400]),
                   child: Center(
-                    child: Text("Login",
+                    child: Text("Register",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
@@ -70,33 +70,12 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              SizedBox(height: 5),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  "Don't have an account ?",
-                  style: TextStyle(color: Colors.black54, fontSize: 15),
-                ),
-                GestureDetector(
-                  child: Text(
-                    " Sign up",
-                    style: TextStyle(
-                        color: Colors.teal[700],
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => Register()));
-                  },
-                ),
-              ]),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               Text(
-                "or",
+                "- - - Third Party Register - - -",
                 style: TextStyle(color: Colors.black54, fontSize: 15),
               ),
+              SizedBox(height: 5),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 GestureDetector(
                   onTap: () {},

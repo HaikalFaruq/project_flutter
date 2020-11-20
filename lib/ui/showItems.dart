@@ -15,27 +15,7 @@ class _PostState extends State<Post> {
       });
     });
   }
-
-  // void hapusPost(String id) async {
-  //   var hapus = await deletePost(id);
-
-  //   AlertDialog alertDialog = AlertDialog(
-  //     content: Container(
-  //       height: 100,
-  //       child: Column(
-  //         children: [
-  //           Text("Delete Post ${hapus}"),
-  //           RaisedButton(
-  //             child: Text("OK"),
-  //             onPressed: () => Navigator.pop(context),
-  //           )
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  //   showDialog(context: context, child: alertDialog);
-  // }
-
+  
   @override
   void initState() {
     super.initState();

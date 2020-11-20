@@ -7,33 +7,7 @@ class Gudang extends StatelessWidget {
         backgroundColor: Colors.teal[50],
         body: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0)),
-                color: Colors.teal[100],
-              ),
-              height: 360,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0)),
-                color: Colors.teal[200],
-              ),
-              height: 340,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0)),
-                color: Colors.teal[300],
-              ),
-              height: 320,
-            ),
+            HomeBackground(),
             Column(
               children: [
                 SizedBox(

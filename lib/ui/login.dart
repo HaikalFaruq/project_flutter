@@ -12,30 +12,7 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.teal[50],
       body: Stack(
         children: [
-          ClipPath(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 320,
-              color: Colors.teal[100],
-            ),
-            clipper: CustomClipPath(),
-          ),
-          ClipPath(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-              color: Colors.teal[200],
-            ),
-            clipper: CustomClipPath1(),
-          ),
-          ClipPath(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 280,
-              color: Colors.teal[300],
-            ),
-            clipper: CustomClipPath2(),
-          ),
+          LoginBackground(),
           ListView(children: [
             Column(children: [
               SizedBox(height: 310),
@@ -99,12 +76,20 @@ class _LoginState extends State<Login> {
                   "Don't have an account ?",
                   style: TextStyle(color: Colors.black54, fontSize: 15),
                 ),
-                Text(
-                  " Sign up",
-                  style: TextStyle(
-                      color: Colors.teal[700],
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
+                GestureDetector(
+                  child: Text(
+                    " Sign up",
+                    style: TextStyle(
+                        color: Colors.teal[700],
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => Register()));
+                  },
                 ),
               ]),
               SizedBox(height: 30),

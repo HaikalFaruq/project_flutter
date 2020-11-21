@@ -6,16 +6,7 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
-  // List dataPostOk;
   List dataBarangOk;
-
-  // void dataPost() {
-  //   getPost().then((value) {
-  //     setState(() {
-  //       dataPostOk = value;
-  //     });
-  //   });
-  // }
 
   void showBarang(){
     getBarang().then((value) {

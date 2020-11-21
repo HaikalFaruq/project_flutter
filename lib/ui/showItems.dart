@@ -70,7 +70,7 @@ class _PostState extends State<Post> {
                                 ),
                                 Expanded(
                                   child: Container(
-                                    color: Colors.blue,
+                                    // color: Colors.blue,
                                     height:
                                         MediaQuery.of(context).size.height * 1,
                                     margin: EdgeInsets.only(
@@ -78,7 +78,7 @@ class _PostState extends State<Post> {
                                     child: Column(
                                       children: [
                                         Container(
-                                          height: 35,
+                                          height: 25,
                                           width: MediaQuery.of(context)
                                               .size
                                               .width *
@@ -99,20 +99,22 @@ class _PostState extends State<Post> {
                                               child: Text(
                                                 dataBarangOk[i]['name_barang'],
                                                 style: TextStyle(
-                                                  fontSize: 15,
+                                                  fontSize: 27,
                                                 ),
                                               ),
                                             )),
                                         Expanded(
                                             child: Container(
+                                              alignment: Alignment.bottomLeft,
+                                              height: 30,
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width *
                                                   1,
                                               child: Text(
-                                                "Jumlah Stock: ",
+                                                "Jumlah Stock: " + dataBarangOk[i]['stock_barang'].toString(),
                                                 style: TextStyle(
-                                                  fontSize: 10,
+                                                  fontSize: 15,
                                                 ),
                                               ),
                                             )),

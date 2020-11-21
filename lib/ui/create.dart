@@ -8,10 +8,39 @@ void main() {
 
 class Create extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CreateState createState() => _CreateState();
 }
 
-class _HomeState extends State<Create> {
+class _CreateState extends State<Create> {
+  TextEditingController namabarang = TextEditingController();
+  TextEditingController jumlah = TextEditingController();
+  String msg;
+
+  void simpanData(){
+    createBarang(namabarang.toString(), jumlah.toString()).then((value){
+      if(value == true){
+        msg = "Sukses";
+      } else {
+        msg = "GAGAL";
+      }
+    });
+
+    AlertDialog alertdialog = AlertDialog(
+      content: Container(
+        height: 100,
+        child: Column(
+          children: <Widget>[
+            Text("Create new Post $msg"),
+            RaisedButton(
+                child: Text("OK ?"),
+                onPressed: () => Navigator.pop(context))
+          ],
+        ),
+      ),
+    );
+    showDialog(context: context, child: alertdialog);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -77,10 +106,12 @@ class _HomeState extends State<Create> {
                             const SizedBox(height: 30),
                             RaisedButton(
                               color: Colors.green[400],
-                              onPressed: () {},
                               child: const Text('OK',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20)),
+                              onPressed: () {
+                                simpanData();
+                              },
                             ),
                           ],
                         ),

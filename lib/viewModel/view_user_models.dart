@@ -19,3 +19,19 @@ Future getBarang() async {
     print("error Catch get Barang : $e");
   }
 }
+
+Future createBarang(String barang, String qty) async {
+  try{
+    var url = 'https://api-gudang.herokuapp.com/api/barang';
+    var hasil = await http.post(url, body: ({"name_barang": barang, "stock_barang": qty}));
+    if(hasil.statusCode == 201){
+      print("Create Berhasil !");
+      return true;
+    } else {
+      print("Gagal Create :(");
+      return false;
+    }
+  } catch(e){
+    print("Error catch when Create Barang: $e");
+  }
+}

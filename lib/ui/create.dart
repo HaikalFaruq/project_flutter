@@ -1,11 +1,5 @@
 part of 'ui.dart';
 
-void main() {
-  runApp(new MaterialApp(
-    home: new Create(),
-  ));
-}
-
 class Create extends StatefulWidget {
   @override
   _CreateState createState() => _CreateState();

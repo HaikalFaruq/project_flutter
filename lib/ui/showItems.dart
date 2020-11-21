@@ -6,12 +6,12 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
-  List dataPostOk;
+  List dataBarangOk;
 
-  void dataPost() {
-    getPost().then((value) {
+  void showBarang(){
+    getBarang().then((value) {
       setState(() {
-        dataPostOk = value;
+        dataBarangOk = value;
       });
     });
   }
@@ -19,7 +19,8 @@ class _PostState extends State<Post> {
   @override
   void initState() {
     super.initState();
-    dataPost();
+    // dataPost();
+    showBarang();
   }
 
   @override
@@ -28,11 +29,11 @@ class _PostState extends State<Post> {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(children: [
-            dataPostOk == null
+            dataBarangOk == null
                 ? Center(child: CircularProgressIndicator())
                 : Expanded(
                     child: ListView.builder(
-                        itemCount: dataPostOk.length,
+                        itemCount: dataBarangOk.length,
                         itemBuilder: (context, i) {
                           return Padding(
                             padding: EdgeInsets.all(15),
@@ -69,38 +70,63 @@ class _PostState extends State<Post> {
                                 ),
                                 Expanded(
                                   child: Container(
+                                    // color: Colors.blue,
                                     height:
                                         MediaQuery.of(context).size.height * 1,
                                     margin: EdgeInsets.only(
                                         top: 15, bottom: 15, right: 15),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 25,
+                                          width: MediaQuery.of(context)
+                                              .size
+                                              .width *
+                                              1,
+                                          child: Text(
+                                            dataBarangOk[i]['id_barang'],
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        Expanded(
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                                  1,
+                                              child: Text(
+                                                dataBarangOk[i]['name_barang'],
+                                                style: TextStyle(
+                                                  fontSize: 27,
+                                                ),
+                                              ),
+                                            )),
+                                        Expanded(
+                                            child: Container(
+                                              alignment: Alignment.bottomLeft,
+                                              height: 30,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                                  1,
+                                              child: Text(
+                                                "Jumlah Stock: " + dataBarangOk[i]['stock_barang'].toString(),
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
                                   ),
                                 )
                               ]),
                             ),
                           );
-
-                          // ListTile(
-                          //   focusColor: Colors.blue,
-                          //   title: Text(dataPostOk[i].title),
-                          //   trailing: Icon(Icons.ac_unit),
-                          //   leading: Icon(Icons.ac_unit),
-                          //   onTap: () {},
-                          // );
                         }),
                   ),
-            // Container(
-            //   alignment: Alignment.bottomRight,
-            //   padding: EdgeInsets.all(20),
-            //   child: FloatingActionButton(
-            //     onPressed: () {
-            //       Navigator.push(context, MaterialPageRoute(builder: (context) {
-            //         return CreatePost();
-            //       }));
-            //     },
-            //     tooltip: 'Increment',
-            //     child: Icon(Icons.add),
-            //   ),
-            // )
           ]),
         ));
   }

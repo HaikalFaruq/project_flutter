@@ -1,46 +1,63 @@
 part of 'ui.dart';
 
-void main() {
-  runApp(new MaterialApp(
-    home: new Create(),
-  ));
-}
-
 class Create extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CreateState createState() => _CreateState();
 }
 
-class _HomeState extends State<Create> {
+class _CreateState extends State<Create> {
+  TextEditingController namabarang = TextEditingController();
+  TextEditingController jumlah = TextEditingController();
+  String msg;
+
+  void simpanData(){
+    createBarang(namabarang.toString(), jumlah.toString()).then((value){
+      if(value == true){
+        msg = "Sukses";
+      } else {
+        msg = "GAGAL";
+      }
+    });
+
+    AlertDialog alertdialog = AlertDialog(
+      content: Container(
+        height: 100,
+        child: Column(
+          children: <Widget>[
+            Text("Create new Post $msg"),
+            RaisedButton(
+                child: Text("OK ?"),
+                onPressed: () => Navigator.pop(context))
+          ],
+        ),
+      ),
+    );
+    showDialog(context: context, child: alertdialog);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         body: Stack(
       children: [
         LoginBackground(),
-        Container(
-            height: 300,
-            width: MediaQuery.of(context).size.width * 1,
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                    height: 150,
-                    width: 150,
-                    child: Image.asset(
-                      'assets/img/addBarang1.png',
-                    )),
-              ],
-            )),
         Padding(
           padding: EdgeInsets.all(50),
           child: Center(
             child: Container(
                 height: 300,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.teal[300]),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.teal[200],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
                 child: Padding(
                   padding: EdgeInsets.all(20),
                   child: Column(
@@ -83,10 +100,12 @@ class _HomeState extends State<Create> {
                             const SizedBox(height: 30),
                             RaisedButton(
                               color: Colors.green[400],
-                              onPressed: () {},
                               child: const Text('OK',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20)),
+                              onPressed: () {
+                                simpanData();
+                              },
                             ),
                           ],
                         ),

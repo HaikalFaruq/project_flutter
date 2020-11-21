@@ -29,6 +29,44 @@ class Gudang extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
+                                              Create()));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 10, bottom: 20),
+                                  width: 140,
+                                  height: 160,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: Offset(
+                                            0, 3), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(children: [
+                                    ClipOval(
+                                      child: Image.asset('assets/img/x1.jpg'),
+                                    ),
+                                    Text(
+                                      "Masukkan Barang",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),
+                                    )
+                                  ]),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
                                               Post()));
                                 },
                                 child: Container(
@@ -53,41 +91,9 @@ class Gudang extends StatelessWidget {
                                       child: Image.asset('assets/img/x1.jpg'),
                                     ),
                                     Text(
-                                      "Import Product",
+                                      "Semua Barang",
                                       style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w700),
-                                    )
-                                  ]),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  margin: EdgeInsets.only(top: 10, bottom: 20),
-                                  width: 140,
-                                  height: 160,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: Offset(
-                                            0, 3), // changes position of shadow
-                                      ),
-                                    ],
-                                  ),
-                                  child: Column(children: [
-                                    ClipOval(
-                                      child: Image.asset('assets/img/x1.jpg'),
-                                    ),
-                                    Text(
-                                      "Export Product",
-                                      style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w700),
                                     )
                                   ]),
@@ -102,7 +108,8 @@ class Gudang extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                },
                                 child: Container(
                                   margin: EdgeInsets.only(top: 10, bottom: 20),
                                   width: 140,
@@ -125,9 +132,9 @@ class Gudang extends StatelessWidget {
                                       child: Image.asset('assets/img/x1.jpg'),
                                     ),
                                     Text(
-                                      "Check Product",
+                                      "Keluarkan Barang",
                                       style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w700),
                                     )
                                   ]),
@@ -157,9 +164,9 @@ class Gudang extends StatelessWidget {
                                       child: Image.asset('assets/img/x1.jpg'),
                                     ),
                                     Text(
-                                      "Ready Product",
+                                      "Export Data Barang",
                                       style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w700),
                                     )
                                   ]),

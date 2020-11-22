@@ -11,25 +11,34 @@ class _CreateState extends State<Create> {
   TextEditingController jumlah = TextEditingController();
   String msg;
 
-  void simpanData(){
-    createBarang(idbarang.toString(), namabarang.toString(), jumlah.toString()).then((value){
+  // String id = "";
+  // String nama = "";
+  // String stock = "";
+
+  void simpanData() {
+    createBarang(idbarang.toString(), namabarang.toString(), jumlah.toString())
+        .then((value) {
       // print("$namabarang <><><><><><><><><><><> $jumlah");
-      if(value == true){
-        msg = "Sukses";
-      } else {
-        msg = "GAGAL";
-      }
+      setState(() {
+        if (value == true) {
+          msg = "Sukses";
+        } else {
+          msg = "GAGAL";
+        }
+      });
     });
 
     AlertDialog alertdialog = AlertDialog(
       content: Container(
-        height: 100,
+        height: 800,
         child: Column(
           children: <Widget>[
-            Text("Create new Post $msg"),
+            // Text("Create new Post ${msg}"),
+            Text("${idbarang.text}"),
+            Text("${namabarang.text}"),
+            Text("${jumlah.text}"),
             RaisedButton(
-                child: Text("OK ?"),
-                onPressed: () => Navigator.pop(context))
+                child: Text("OK ?"), onPressed: () => Navigator.pop(context))
           ],
         ),
       ),
@@ -42,104 +51,114 @@ class _CreateState extends State<Create> {
     return new Scaffold(
         resizeToAvoidBottomInset: false,
         body: Stack(
-      children: [
-        LoginBackground(),
-        Padding(
-          padding: EdgeInsets.all(50),
-          child: Center(
-            child: Container(
-                height: 370,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.teal[200],
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new TextFormField(
-                        controller: idbarang,
-                        decoration: new InputDecoration(
-                            hintText: "id barang",
-                            labelText: "id barang",
-                            labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(20.0),
-                            ),
-                            hintStyle:
-                            TextStyle(color: Colors.teal[50], fontSize: 20),
-                            hoverColor: Colors.white),
-                      ),
-                      new Padding(
-                        padding: new EdgeInsets.only(top: 20.0),
-                      ),
-                      new TextFormField(
-                        controller: namabarang,
-                        decoration: new InputDecoration(
-                            hintText: "Nama Barang",
-                            labelText: "Nama Barang",
-                            labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(20.0),
-                            ),
-                            hintStyle:
-                                TextStyle(color: Colors.teal[50], fontSize: 20),
-                            hoverColor: Colors.white),
-                      ),
-                      new Padding(
-                        padding: new EdgeInsets.only(top: 20.0),
-                      ),
-                      new TextFormField(
-                        controller: jumlah,
-                        decoration: new InputDecoration(
-                            hintText: "Jumlah Barang",
-                            labelText: "Jumlah Barang",
-                            labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: new OutlineInputBorder(
-                                borderRadius: new BorderRadius.circular(20.0))),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            const SizedBox(height: 30),
-                            RaisedButton(
-                              color: Colors.green[400],
-                              child: const Text('OK',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20)),
-                              onPressed: () {
-                                simpanData();
-                              },
-                            ),
-                          ],
+          children: [
+            LoginBackground(),
+            Padding(
+              padding: EdgeInsets.all(50),
+              child: Center(
+                child: Container(
+                    height: 370,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: Colors.teal[200],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
                         ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new TextFormField(
+                            controller: idbarang,
+                            decoration: new InputDecoration(
+                                hintText: "id barang",
+                                labelText: "id barang",
+                                labelStyle: TextStyle(color: Colors.white),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                border: new OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(20.0),
+                                ),
+                                hintStyle: TextStyle(
+                                    color: Colors.teal[50], fontSize: 20),
+                                hoverColor: Colors.white),
+                            style:
+                                TextStyle(color: Colors.teal[50], fontSize: 15),
+                          ),
+                          new Padding(
+                            padding: new EdgeInsets.only(top: 20.0),
+                          ),
+                          new TextFormField(
+                            controller: namabarang,
+                            decoration: new InputDecoration(
+                                hintText: "Nama Barang",
+                                labelText: "Nama Barang",
+                                labelStyle: TextStyle(color: Colors.white),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                border: new OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(20.0),
+                                ),
+                                hintStyle: TextStyle(
+                                    color: Colors.teal[50], fontSize: 20),
+                                hoverColor: Colors.white),
+                            style:
+                                TextStyle(color: Colors.teal[50], fontSize: 15),
+                          ),
+                          new Padding(
+                            padding: new EdgeInsets.only(top: 20.0),
+                          ),
+                          new TextFormField(
+                            controller: jumlah,
+                            decoration: new InputDecoration(
+                                hintText: "Jumlah Barang",
+                                labelText: "Jumlah Barang",
+                                labelStyle: TextStyle(color: Colors.white),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                border: new OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(20.0),
+                                ),
+                                hintStyle: TextStyle(
+                                    color: Colors.teal[50], fontSize: 20),
+                                hoverColor: Colors.white),
+                            style:
+                                TextStyle(color: Colors.teal[50], fontSize: 15),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                const SizedBox(height: 30),
+                                RaisedButton(
+                                  color: Colors.green[400],
+                                  child: const Text('OK',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20)),
+                                  onPressed: () {
+                                    simpanData();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )),
-          ),
-        ),
-      ],
-    ));
+                    )),
+              ),
+            ),
+          ],
+        ));
   }
 }

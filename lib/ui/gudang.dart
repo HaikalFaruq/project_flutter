@@ -8,6 +8,39 @@ class Gudang extends StatelessWidget {
         body: Stack(
           children: [
             HomeBackground(),
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    "Welcome!",
+                    style: TextStyle(fontSize: 50, color: Colors.teal[50]),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "Admin",
+                    style: TextStyle(fontSize: 25, color: Colors.teal[50]),
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 125,
+                  ),
+                  Image.asset(
+                    'assets/img/vector.png',
+                    height: 200,
+                  )
+                ],
+              ),
+            ),
             Column(
               children: [
                 SizedBox(
@@ -61,13 +94,14 @@ class Gudang extends StatelessWidget {
                                   ]),
                                 ),
                               ),
+                              ////// Semua Barang
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              Post()));
+                                              Show()));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(top: 10, bottom: 20),
@@ -107,8 +141,14 @@ class Gudang extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              //// Keluar barang
                               GestureDetector(
                                 onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Delete()));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(top: 10, bottom: 20),

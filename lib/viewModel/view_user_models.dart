@@ -20,17 +20,17 @@ Future getBarang() async {
 }
 
 Future createBarang(String idbarang, String barang, String qty) async {
-  try{
+  try {
     var url = 'https://api-gudang.herokuapp.com/api/barang';
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    Map<String, dynamic> requestPayload = {
-      "id_barang": idbarang,
-      "name_barang": barang,
-      "stock_barang": qty,
-    };
-    var hasil = await http.post(url, body: jsonEncode(requestPayload), headers: {'Content-Type': 'application/json'});
+    var hasil = await http.post(url,
+        body: ({
+          "id_barang": idbarang,
+          "name_barang": barang,
+          "stock_barang": qty,
+        }));
 
-    if(hasil.statusCode == 201){
+    if (hasil.statusCode == 201) {
       print("Create Berhasil !");
       return true;
     } else {
@@ -38,7 +38,7 @@ Future createBarang(String idbarang, String barang, String qty) async {
       print(hasil.statusCode);
       return false;
     }
-  } catch(e){
+  } catch (e) {
     print("Error catch when Create Barang: $e");
   }
 }

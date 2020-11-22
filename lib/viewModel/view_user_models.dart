@@ -9,7 +9,6 @@ Future getBarang() async {
     if (hasil.statusCode == 200) {
       print("Success menampilkan data");
       final data = json.decode(hasil.body);
-      // print("Get barang :" + data);
       return data;
     } else {
       print("Gagal");
@@ -20,15 +19,23 @@ Future getBarang() async {
   }
 }
 
-Future createBarang(String barang, String qty) async {
+Future createBarang(String idbarang, String barang, String qty) async {
   try{
     var url = 'https://api-gudang.herokuapp.com/api/barang';
-    var hasil = await http.post(url, body: ({"name_barang": barang, "stock_barang": qty}));
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    Map<String, dynamic> requestPayload = {
+      "id_barang": idbarang,
+      "name_barang": barang,
+      "stock_barang": qty,
+    };
+    var hasil = await http.post(url, body: jsonEncode(requestPayload), headers: {'Content-Type': 'application/json'});
+
     if(hasil.statusCode == 201){
       print("Create Berhasil !");
       return true;
     } else {
       print("Gagal Create :(");
+      print(hasil.statusCode);
       return false;
     }
   } catch(e){

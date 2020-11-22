@@ -6,12 +6,14 @@ class Create extends StatefulWidget {
 }
 
 class _CreateState extends State<Create> {
+  TextEditingController idbarang = TextEditingController();
   TextEditingController namabarang = TextEditingController();
   TextEditingController jumlah = TextEditingController();
   String msg;
 
   void simpanData(){
-    createBarang(namabarang.toString(), jumlah.toString()).then((value){
+    createBarang(idbarang.toString(), namabarang.toString(), jumlah.toString()).then((value){
+      // print("$namabarang <><><><><><><><><><><> $jumlah");
       if(value == true){
         msg = "Sukses";
       } else {
@@ -38,6 +40,7 @@ class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(
       children: [
         LoginBackground(),
@@ -45,7 +48,7 @@ class _CreateState extends State<Create> {
           padding: EdgeInsets.all(50),
           child: Center(
             child: Container(
-                height: 300,
+                height: 370,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.teal[200],
@@ -63,7 +66,27 @@ class _CreateState extends State<Create> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new TextField(
+                      new TextFormField(
+                        controller: idbarang,
+                        decoration: new InputDecoration(
+                            hintText: "id barang",
+                            labelText: "id barang",
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(20.0),
+                            ),
+                            hintStyle:
+                            TextStyle(color: Colors.teal[50], fontSize: 20),
+                            hoverColor: Colors.white),
+                      ),
+                      new Padding(
+                        padding: new EdgeInsets.only(top: 20.0),
+                      ),
+                      new TextFormField(
+                        controller: namabarang,
                         decoration: new InputDecoration(
                             hintText: "Nama Barang",
                             labelText: "Nama Barang",
@@ -81,7 +104,8 @@ class _CreateState extends State<Create> {
                       new Padding(
                         padding: new EdgeInsets.only(top: 20.0),
                       ),
-                      new TextField(
+                      new TextFormField(
+                        controller: jumlah,
                         decoration: new InputDecoration(
                             hintText: "Jumlah Barang",
                             labelText: "Jumlah Barang",

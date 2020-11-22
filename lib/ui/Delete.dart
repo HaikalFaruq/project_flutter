@@ -1,11 +1,11 @@
 part of 'ui.dart';
 
-class Show extends StatefulWidget {
+class Delete extends StatefulWidget {
   @override
-  _ShowState createState() => _ShowState();
+  _DeleteState createState() => _DeleteState();
 }
 
-class _ShowState extends State<Show> {
+class _DeleteState extends State<Delete> {
   List dataBarangOk;
 
   void showBarang() {
@@ -19,7 +19,7 @@ class _ShowState extends State<Show> {
   @override
   void initState() {
     super.initState();
-    // dataShow();
+    // dataDelete();
     showBarang();
   }
 
@@ -99,8 +99,8 @@ class _ShowState extends State<Show> {
                                                   onTap: () {},
                                                   child: Container(
                                                     child: Icon(
-                                                      Icons.edit,
-                                                      color: Colors.teal[700],
+                                                      Icons.delete,
+                                                      color: Colors.red,
                                                     ),
                                                   ),
                                                 ),

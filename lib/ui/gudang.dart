@@ -42,10 +42,9 @@ class Gudang extends StatelessWidget {
               ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  height: 210,
-                ),
+                SizedBox(),
                 Container(
                   child: Padding(
                     padding: EdgeInsets.all(20),
@@ -181,7 +180,13 @@ class Gudang extends StatelessWidget {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Laporan()));
+                                },
                                 child: Container(
                                   margin: EdgeInsets.only(top: 10, bottom: 20),
                                   width: 140,

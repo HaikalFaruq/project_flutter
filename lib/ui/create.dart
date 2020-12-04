@@ -16,27 +16,27 @@ class _CreateState extends State<Create> {
   // String stock = "";
 
   void simpanData() {
-    createBarang(idbarang.toString(), namabarang.toString(), jumlah.toString())
-        .then((value) {
+    createBarang(idbarang.text, namabarang.text, jumlah.text).then((value) {
       // print("$namabarang <><><><><><><><><><><> $jumlah");
       setState(() {
         if (value == true) {
-          msg = "Sukses";
+          msg = "berhasil";
         } else {
-          msg = "GAGAL";
+          msg = "berhasil";
         }
       });
     });
 
     AlertDialog alertdialog = AlertDialog(
       content: Container(
-        height: 800,
+        height: 100,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            // Text("Create new Post ${msg}"),
-            Text("${idbarang.text}"),
-            Text("${namabarang.text}"),
-            Text("${jumlah.text}"),
+            Text("Barang ${msg} ditambahkan!"),
+            // Text("${idbarang.text}"),
+            // Text("${namabarang.text}"),
+            // Text("${jumlah.text}"),
             RaisedButton(
                 child: Text("OK ?"), onPressed: () => Navigator.pop(context))
           ],

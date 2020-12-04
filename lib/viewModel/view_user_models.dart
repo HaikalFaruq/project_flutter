@@ -42,3 +42,19 @@ Future createBarang(String idbarang, String barang, String qty) async {
     print("Error catch when Create Barang: $e");
   }
 }
+
+Future deletePost(String id) async {
+  try {
+    var url = "https://api-gudang.herokuapp.com/api/barang/$id";
+    var hasil = await http.delete(url);
+    if (hasil.statusCode == 200) {
+      print("Success mendelete data");
+      return "ok";
+    } else {
+      print("Gagal mendelete data");
+      return "fail";
+    }
+  } catch (e) {
+    print("error pada catch delete post $e");
+  }
+}

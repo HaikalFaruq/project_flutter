@@ -96,7 +96,13 @@ class _ShowState extends State<Show> {
                                                           FontWeight.bold),
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () {},
+                                                  onTap: () {
+                                                    print(
+                                                        dataBarangOk[i]["id"]);
+                                                    // return hapusPost(
+                                                    //     dataBarangOk[i]['id']
+                                                    //         .toString());
+                                                  },
                                                   child: Container(
                                                     child: Icon(
                                                       Icons.edit,

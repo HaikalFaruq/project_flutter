@@ -58,3 +58,22 @@ Future deletePost(String id) async {
     print("error pada catch delete post $e");
   }
 }
+
+// Future exportPDF() async {
+//   try {
+//     http.Response hasil = await http.get(
+//         Uri.encodeFull("https://api-gudang.herokuapp.com/api/barang"),
+//         headers: {"Accept": "application/json"});
+//     if (hasil.statusCode == 200) {
+//       print("Success menampilkan data");
+//           http.Response hasil = await http.get(
+//           Uri.encodeFull("https://api-gudang.herokuapp.com/api/laporan/excel"));
+//       return hasil;
+//     } else {
+//       print("Gagal");
+//       return null;
+//     }
+//   } catch (e) {
+//     print("error Catch Export PDF : $e");
+//   }
+// }
